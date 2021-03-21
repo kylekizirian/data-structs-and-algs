@@ -33,4 +33,17 @@ def mergesort_iterative(list_: List) -> List:
     return item_queue.get()
 
 
-mergesort_iterative([3, 2, 1, 4, 5]) == [1, 2, 3, 4, 5]
+def mergesort_recursive(list_: List) -> List:
+    """Sorts the given list"""
+    if len(list_) <= 1:
+        return list_
+
+    mid = int(len(list_) // 2)
+    first_half = mergesort_recursive(list_[:mid])
+    second_half = mergesort_recursive(list_[mid:])
+
+    return merge(first_half, second_half)
+
+
+assert mergesort_iterative([3, 2, 1, 4, 5]) == [1, 2, 3, 4, 5]
+assert mergesort_recursive([3, 2, 1, 4, 5]) == [1, 2, 3, 4, 5]
