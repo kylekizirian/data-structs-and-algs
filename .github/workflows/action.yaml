@@ -18,7 +18,7 @@ jobs:
                   python -m pip install -r requirements-dev.txt
             - name: Lint
               run: |
-                  python -m pylint --disable=R,C application.py
+                  python -m pylint --disable=R,C src/
                   python -m pylint tests/
             - name: Run black format check
               run: black --check .
