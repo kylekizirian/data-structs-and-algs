@@ -27,8 +27,8 @@ def mergesort_iterative(list_: List) -> List:
         item_queue.put([item])
 
     while item_queue.qsize() > 1:
-        l1, l2 = item_queue.get(), item_queue.get()
-        item_queue.put(merge(l1, l2))
+        list1, list2 = item_queue.get(), item_queue.get()
+        item_queue.put(merge(list1, list2))
 
     return item_queue.get()
 
