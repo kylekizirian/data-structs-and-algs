@@ -1,18 +1,21 @@
-from typing import Callable
+from typing import Callable, List
+
+from hypothesis import given, strategies as st
 
 from honey.mergesort import mergesort_iterative, mergesort_recursive
 from honey.quicksort import quicksort
 
 
-def sort_test(sort: Callable):
-    assert sort([]) == []
-    assert sort([5, 4, 3, 2, 1]) == [1, 2, 3, 4, 5]
+def sort_test(sort: Callable, test_list: List):
+    assert sort(test_list) == sorted(test_list)
 
 
-def test_mergesort():
-    sort_test(mergesort_iterative)
-    sort_test(mergesort_recursive)
+@given(st.lists(st.integers()))
+def test_mergesort(test_list):
+    sort_test(mergesort_iterative, test_list)
+    sort_test(mergesort_recursive, test_list)
 
 
-def test_quicksort():
-    sort_test(quicksort)
+@given(st.lists(st.integers()))
+def test_quicksort(test_list):
+    sort_test(quicksort, test_list)
