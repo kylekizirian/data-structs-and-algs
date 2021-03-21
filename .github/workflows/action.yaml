@@ -1,0 +1,33 @@
+name: Test and lint
+
+on: [push]
+
+jobs:
+    build:
+
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v2
+            - name: Set up Python
+              uses: actions/setup-python@v2
+              with:
+                  python-version: '3.6'
+            - name: Install dependencies
+              run: python -m pip install -r requirements-dev.txt
+            - name: Install honey package
+              run: pip install -e .
+            - name: Lint
+              run: |
+                  python -m pylint --disable=R,C src/
+                  python -m pylint --disable=R,C tests/
+            - name: Run black format check
+              run: black --check .
+            - name: Run pytest
+              run: python -m pytest --cov=application --cov-report html
+            - name: Archive html coverage
+              uses: actions/upload-artifact@v2
+              with:
+                  name: html-coverage
+                  path: htmlcov
+
