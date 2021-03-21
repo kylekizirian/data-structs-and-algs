@@ -14,7 +14,7 @@ together. Once the queue has only a single item, return it
 from queue import Queue
 from typing import List
 
-from merge import merge
+from honey.merge import merge
 
 
 def mergesort_iterative(list_: List) -> List:
