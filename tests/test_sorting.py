@@ -13,6 +13,6 @@ def test_mergesort():
     sort_test(mergesort_iterative)
     sort_test(mergesort_recursive)
 
+
 def test_quicksort():
     sort_test(quicksort)
-
