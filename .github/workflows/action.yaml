@@ -24,8 +24,6 @@ jobs:
               run: black --check .
             - name: Run pytest
               run: python -m pytest --cov=application --cov-report html
-            # Comment out artifacting HTML coverage to save storage
-            # on GH actions for now.
             - name: Archive html coverage
               uses: actions/upload-artifact@v2
               with:
