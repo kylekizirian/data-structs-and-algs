@@ -9,4 +9,3 @@ def test_mergesort_iterative():
 def test_mergesort_recursive():
     assert mergesort_recursive([]) == []
     assert mergesort_recursive([5, 4, 3, 2, 1]) == [1, 2, 3, 4, 5]
-
