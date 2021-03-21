@@ -19,7 +19,7 @@ jobs:
             - name: Lint
               run: |
                   python -m pylint --disable=R,C src/
-                  python -m pylint tests/
+                  python -m pylint --disable=R,C tests/
             - name: Run black format check
               run: black --check .
             - name: Run pytest
