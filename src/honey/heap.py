@@ -43,8 +43,6 @@ from typing import Any, Callable, List, Tuple
 class Empty(Exception):
     """Raised when trying to pop from an empty heap"""
 
-    pass
-
 
 class _Heap:
     def __init__(self, compare: Callable = operator.lt):
