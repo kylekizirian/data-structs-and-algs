@@ -26,7 +26,6 @@ good hash algorithm, the likelihood of such behavior is vanishingly small.
 
 _BASE = 256
 _PRIME_MOD = 101
-_LEFT_BASE_OFFSET = (_BASE % _PRIME_MOD) * _BASE
 
 
 def _hash(string: str) -> int:
