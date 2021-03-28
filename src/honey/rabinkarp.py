@@ -1,12 +1,12 @@
 """
 Rabin-Karp Algorithm
 
-Uses a rolling hash for expected linear time string-matching.
+Uses a rolling hash for expected linear time substring search.
 
 Given a string of length n and a substring of length m being searched for,
 the steps are as follows:
 
-1. Compute the substrings hash
+1. Compute the substring's hash
 2. Compute the hash of the first m characters of the string being searched
 3. For each character in the string being searched, update the string's
 rolling hash by subtracting off the left-most character and adding the next
@@ -14,12 +14,12 @@ character to the hash. Check whether the substring's hash matches the
 rolling hash and, if so, check that the substrings themselves match. If
 both match, we've found a match.
 
-The algorithm runs in expected linear time because each step updates the
-hash with one new character and compares the substring hashes. Assuming no
-hash collisions, either the hashes don't match because the substrings don't
+The algorithm runs in expected O(n) because each step updates the hash with
+one new character and compares the substring hashes. Assuming no hash
+collisions, either the hashes don't match because the substrings don't
 match, or the hashes do match and we've found the substring.
 
-The algorithm still runs in worst-case O(mn) time because if we have a hash
+The algorithm still runs in worst-case O(nm) because if we have a hash
 collision, we have to compare m characters to check for a match. With a
 good hash algorithm, the likelihood of such behavior is vanishingly small.
 """
@@ -32,7 +32,7 @@ def _hash(string: str) -> int:
     """Hash function used for Rabin-Karp algorithm
 
     For a string length n with characters c_0, c_1, ..., c_n-1, the hash
-    is computed as
+    is computed as:
 
     c_0*k^(n-1) + c_1*k^(n-2) + ... + c_n-1 * k^0
 
