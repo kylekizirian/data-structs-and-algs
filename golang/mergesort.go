@@ -1,4 +1,4 @@
-package mergesort
+package honey
 
 // Given two sorted arrays, merge them together
 func merge(arr1 []int, arr2 []int) []int {
